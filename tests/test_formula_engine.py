@@ -78,3 +78,7 @@ class TestCompileAndEvaluate:
         self.engine.validate_and_compile(expr)
         self.engine.validate_and_compile(expr)  # 应命中缓存
         assert self.engine.evaluate(expr, 0.5) == pytest.approx(1.0)
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

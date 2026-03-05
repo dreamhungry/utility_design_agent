@@ -48,3 +48,7 @@ class TestExporter:
 
             data = json.loads(config_path.read_text(encoding="utf-8"))
             assert data == []
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

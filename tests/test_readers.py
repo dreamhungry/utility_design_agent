@@ -70,3 +70,7 @@ class TestLocalReader:
         reader = LocalReader()
         with pytest.raises(FileNotFoundError):
             await reader.read(path="/nonexistent/file.xlsx")
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

@@ -55,3 +55,7 @@ class TestNPCCurveConfig:
         cfg = NPCCurveConfig(npc_name="空NPC")
         assert cfg.utility_functions == []
         assert cfg.metadata == {}
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

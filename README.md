@@ -19,23 +19,44 @@
 
 ## 🚀 快速开始
 
-### 1. 安装
-
-#### 通过 pip 安装（开发模式）
+### 1. 克隆项目
 
 ```bash
-# 克隆项目
 git clone https://github.com/dreamhungry/utility_design_agent.git
 cd utility-design-agent
+```
 
-# 安装依赖（可编辑模式）
+### 2. 创建虚拟环境（推荐）
+
+**Windows (PowerShell):**
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+```
+
+**Windows (CMD):**
+```cmd
+python -m venv venv
+venv\Scripts\activate.bat
+```
+
+**Linux / macOS:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 3. 安装依赖
+
+```bash
+# 基础安装（生产依赖）
 pip install -e .
 
-# 安装开发依赖（可选）
+# 完整安装（包含开发/测试工具）
 pip install -e ".[dev]"
 ```
 
-### 2. 配置环境变量
+### 4. 配置环境变量
 
 复制 `.env.example` 并重命名为 `.env`，填写必要的配置：
 
@@ -52,7 +73,7 @@ OPENAI_API_KEY=your_api_key_here
 OPENAI_MODEL=gpt-4o         # 或其他模型
 
 # 可选配置
-OPENAI_API_BASE=            # 国内代理地址（可选）
+OPENAI_API_BASE=            # 例如: http://your-proxy.com/v1
 OUTPUT_DIR=output           # 输出目录
 ```
 
@@ -63,18 +84,29 @@ FEISHU_APP_ID=your_app_id
 FEISHU_APP_SECRET=your_app_secret
 ```
 
-### 3. 运行示例
+### 5. 运行示例
 
+**快速运行（推荐）：**
 ```bash
-# 使用本地文件生成效用函数
-utility-design process-local input.xlsx --output output.xlsx --visualize
+# Windows
+run_example.bat
 
-# 从飞书多维表格读取并处理
-utility-design process-feishu <app_token> <table_id> --output output.xlsx
-
-# 仅生成可视化图表
-utility-design visualize output.json --output-dir ./charts
+# Linux/macOS
+chmod +x run_example.sh
+./run_example.sh
 ```
+
+**或手动运行：**
+```bash
+# 运行完整示例流程
+python example.py
+
+# 使用 CLI 工具
+utility-design --help
+utility-design process-local input.xlsx --output output.xlsx --visualize
+```
+
+> 💡 **提示**: 详细的环境设置说明请查看 [SETUP.md](SETUP.md)
 
 ---
 

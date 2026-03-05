@@ -46,3 +46,7 @@ class TestVisualizer:
             out = self.viz.save(fig, Path(tmpdir) / "test.svg", fmt="svg")
             assert out.exists()
             assert out.suffix == ".svg"
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

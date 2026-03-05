@@ -37,3 +37,7 @@ class TestPromptBuilder:
         user_msg = messages[-1]["content"]
         assert "逃跑" in user_msg
         assert "拾取" in user_msg
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])

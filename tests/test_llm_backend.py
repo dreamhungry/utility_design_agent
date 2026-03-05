@@ -47,3 +47,7 @@ class TestLiteLLMBackend:
         with patch("litellm.acompletion", new_callable=AsyncMock, return_value=mock_response):
             result = await backend.generate([{"role": "user", "content": "test"}])
             assert "test" in result
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])
