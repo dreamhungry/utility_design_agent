@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "utility-design-agent"
+version = "0.1.0"
+description = "NPC 效用函数自动生成库 + CLI 工具"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "typer>=0.9",
+    "rich>=13.0",
+    "httpx>=0.25",
+    "openpyxl>=3.1",
+    "openai>=1.0",
+    "litellm>=1.0",
+    "matplotlib>=3.7",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+]
+
+[project.scripts]
+utility-design = "utility_design_agent.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
