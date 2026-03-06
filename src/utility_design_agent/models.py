@@ -24,7 +24,7 @@ class UtilityFunction(BaseModel):
     behavior: str = Field(..., description="行为名称")
     formula: str = Field(..., description="Python 数学表达式字符串")
     description: str = Field("", description="表达式含义说明")
-    input_range: tuple[float, float] = Field(default=(0.0, 1.0), description="输入值域")
+    input_range: tuple[float, float] = Field(default=(0.0, 100), description="输入值域")
     output_range: tuple[float, float] = Field(default=(0.0, 1.0), description="输出值域")
 
 

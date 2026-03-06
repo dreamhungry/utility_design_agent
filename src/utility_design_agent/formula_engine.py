@@ -108,7 +108,7 @@ class FormulaEngine:
         expr: str,
         n_points: int = 200,
         x_min: float = 0.0,
-        x_max: float = 1.0,
+        x_max: float = 100.0,
     ) -> list[tuple[float, float]]:
         """在指定范围内均匀采样
 
