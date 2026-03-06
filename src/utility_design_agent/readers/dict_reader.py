@@ -15,7 +15,7 @@ class DictReader(BaseReader):
         """将 list[dict] 转换为 NPCData 列表
 
         Args:
-            data: 字典列表，每个字典包含 name / personality_tags / behavior_preferences / design_intent 字段
+            data: 字典列表，每个字典包含 name / personality_tags / needs / design_intent 字段
 
         Returns:
             NPCData 列表

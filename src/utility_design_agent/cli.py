@@ -91,9 +91,9 @@ def generate(
         table = Table(title="NPC 数据")
         table.add_column("名称", style="cyan")
         table.add_column("性格标签", style="green")
-        table.add_column("行为偏好", style="magenta")
+        table.add_column("需求", style="magenta")
         for npc in npcs:
-            table.add_row(npc.name, ", ".join(npc.personality_tags), ", ".join(npc.behavior_preferences))
+            table.add_row(npc.name, ", ".join(npc.personality_tags), ", ".join(npc.needs))
         console.print(table)
 
         # 2. LLM 生成

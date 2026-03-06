@@ -75,7 +75,7 @@ npcs = reader.read(path="npcs.xlsx")
 reader = DictReader()
 npcs = reader.read(data=[
     {"name": "哥布林", "personality_tags": ["胆小", "贪婪"],
-     "behavior_preferences": ["逃跑", "拾取"], "design_intent": "..."},
+     "needs": ["逃跑", "拾取"], "design_intent": "..."},
 ])
 
 # 2. 生成效用函数
@@ -100,7 +100,7 @@ fig.savefig("output.png")
 
 - 通过飞书开放平台 Sheets API 在线读取策划维护的 NPC 性格设计表
 - 使用 App ID / App Secret 获取 tenant_access_token 进行认证
-- 自动识别关键列：NPC 名称、性格标签、行为偏好、自然语言设计意图
+- 自动识别关键列：NPC 名称、性格标签、需求、自然语言设计意图
 
 ### 2. 本地 Excel/CSV 文档解析
 
@@ -319,7 +319,7 @@ from pydantic import BaseModel
 class NPCData(BaseModel):
     name: str
     personality_tags: list[str]       # 如 ["胆小", "贪婪"]
-    behavior_preferences: list[str]   # 如 ["远程攻击", "拾取物品"]
+    needs: list[str]   # 如 ["远程攻击", "拾取物品"]
     design_intent: str                # 自然语言设计意图
 ```
 

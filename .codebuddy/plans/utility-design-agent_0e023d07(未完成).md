@@ -1,6 +1,6 @@
 ---
 name: utility-design-agent
-overview: 构建一个Python CLI工具，解析策划的Excel需求文档（NPC名称、性格标签、行为偏好、自然语言设计意图），通过LLM自动生成效用AI响应曲线（Response Curve）的类型和参数，输出为JSON配置文件。支持多种LLM模型切换。
+overview: 构建一个Python CLI工具，解析策划的Excel需求文档（NPC名称、性格标签、需求、自然语言设计意图），通过LLM自动生成效用AI响应曲线（Response Curve）的类型和参数，输出为JSON配置文件。支持多种LLM模型切换。
 todos:
   - id: init-project
     content: 初始化Python项目结构，配置pyproject.toml依赖与入口脚本
@@ -41,14 +41,14 @@ todos:
 
 ## 产品概述
 
-一个面向游戏策划的Python CLI工具，能够解析策划编写的Excel/CSV需求文档（包含NPC名称、性格标签、行为偏好、自然语言设计意图等），通过大语言模型（LLM）自动生成效用AI（Utility AI）中的响应曲线（Response Curve）类型与参数，最终输出为可供游戏引擎或可视化工具使用的JSON配置文件。工具支持多种LLM模型（OpenAI、Ollama本地模型、国内模型等）灵活切换，降低策划手动调参的成本。
+一个面向游戏策划的Python CLI工具，能够解析策划编写的Excel/CSV需求文档（包含NPC名称、性格标签、需求、自然语言设计意图等），通过大语言模型（LLM）自动生成效用AI（Utility AI）中的响应曲线（Response Curve）类型与参数，最终输出为可供游戏引擎或可视化工具使用的JSON配置文件。工具支持多种LLM模型（OpenAI、Ollama本地模型、国内模型等）灵活切换，降低策划手动调参的成本。
 
 ## 核心功能
 
 ### 1. Excel/CSV 文档解析
 
 - 支持读取 `.xlsx` 和 `.csv` 格式的策划需求文档
-- 自动识别关键列：NPC名称、性格标签、行为偏好、设计意图（自然语言描述）
+- 自动识别关键列：NPC名称、性格标签、需求、设计意图（自然语言描述）
 - 对缺失字段或格式异常进行校验并给出友好提示
 
 ### 2. LLM 驱动的响应曲线生成
@@ -172,7 +172,7 @@ utility-design-agent/
 
 ### 关键数据结构
 
-**NPCData**: 从Excel解析出的单个NPC原始数据，包含名称、性格标签列表、行为偏好列表以及策划撰写的自然语言设计意图。
+**NPCData**: 从Excel解析出的单个NPC原始数据，包含名称、性格标签列表、需求列表以及策划撰写的自然语言设计意图。
 
 ```python
 from pydantic import BaseModel
@@ -180,7 +180,7 @@ from pydantic import BaseModel
 class NPCData(BaseModel):
     name: str
     personality_tags: list[str]       # 如 ["胆小", "贪婪"]
-    behavior_preferences: list[str]   # 如 ["远程攻击", "拾取物品"]
+    needs: list[str]   # 如 ["远程攻击", "拾取物品"]
     design_intent: str                # 自然语言描述
 ```
 

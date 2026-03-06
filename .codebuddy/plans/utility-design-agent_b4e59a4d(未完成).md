@@ -46,7 +46,7 @@ todos:
 
 ## 核心功能
 
-1. **飞书电子表格在线读取**：通过飞书开放平台Sheets API读取策划维护的NPC性格设计表格（含NPC名称、性格标签、行为偏好、自然语言设计意图），备选支持本地Excel/CSV文件导入
+1. **飞书电子表格在线读取**：通过飞书开放平台Sheets API读取策划维护的NPC性格设计表格（含NPC名称、性格标签、需求、自然语言设计意图），备选支持本地Excel/CSV文件导入
 2. **LLM自动生成效用函数表达式**：将NPC设计意图发送给LLM，自动生成Python数学表达式字符串（如 `1 / (1 + math.exp(-4 * (x - 0.5)))`），支持通过litellm切换多种LLM模型（OpenAI、Claude、本地模型等）
 3. **AST白名单安全校验**：对LLM生成的表达式进行ast.parse解析，仅允许数学运算符和math库函数，禁止函数调用、import、属性访问等危险操作，确保表达式在游戏环境中安全执行
 4. **JSON配置输出**：将校验通过的公式表达式、曲线元数据（参数范围、采样点等）输出为结构化JSON配置文件，同时生成曲线采样数据文件供可视化或调试使用
@@ -170,7 +170,7 @@ utility-design-agent/
 
 ### 关键代码结构
 
-**NPC设计数据模型**：定义从电子表格解析出的NPC策划数据结构，包含名称、性格标签、行为偏好列表以及策划撰写的自然语言设计意图描述。
+**NPC设计数据模型**：定义从电子表格解析出的NPC策划数据结构，包含名称、性格标签、需求列表以及策划撰写的自然语言设计意图描述。
 
 ```python
 from pydantic import BaseModel
@@ -179,7 +179,7 @@ from typing import List, Optional
 class NPCDesignData(BaseModel):
     npc_name: str
     personality_tags: List[str]
-    behavior_preferences: List[str]
+    needs: List[str]
     design_intent: str  # 策划的自然语言描述
 ```
 

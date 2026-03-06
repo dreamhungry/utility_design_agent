@@ -26,14 +26,16 @@ class PromptBuilder:
         messages: list[dict[str, str]] = [
             {"role": "system", "content": self.system_prompt},
         ]
-        messages.extend(self.few_shot_examples)
+        # messages.extend(self.few_shot_examples)
         messages.append({
             "role": "user",
             "content": USER_PROMPT_TEMPLATE.format(
                 name=npc.name,
                 personality_tags=", ".join(npc.personality_tags),
-                behavior_preferences=", ".join(npc.behavior_preferences),
+                needs=", ".join(npc.needs),
                 design_intent=npc.design_intent,
+                age=npc.age,
+                features=", ".join(npc.features),
             ),
         })
         return messages

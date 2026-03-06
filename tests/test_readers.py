@@ -14,7 +14,7 @@ class TestDictReader:
             {
                 "name": "哥布林",
                 "personality_tags": ["胆小", "贪婪"],
-                "behavior_preferences": ["逃跑", "拾取"],
+                "needs": ["逃跑", "拾取"],
                 "design_intent": "测试意图",
             }
         ]

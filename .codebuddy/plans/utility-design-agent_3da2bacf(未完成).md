@@ -42,7 +42,7 @@ todos:
 
 ## 产品概述
 
-一个面向游戏策划的 Python CLI 工具，优先通过飞书开放平台 API 在线读取策划维护的飞书电子表格，同时支持本地 Excel(.xlsx)/CSV 文件作为备选输入源。工具解析表格中的 NPC 性格设计数据（名称、性格标签、行为偏好、设计意图等），通过大语言模型（LLM）自动生成效用 AI 响应曲线（Response Curve）的类型与参数，最终输出标准化 JSON 配置文件和曲线采样数据文件。支持多种 LLM 模型灵活切换，降低策划手动调参成本。
+一个面向游戏策划的 Python CLI 工具，优先通过飞书开放平台 API 在线读取策划维护的飞书电子表格，同时支持本地 Excel(.xlsx)/CSV 文件作为备选输入源。工具解析表格中的 NPC 性格设计数据（名称、性格标签、需求、设计意图等），通过大语言模型（LLM）自动生成效用 AI 响应曲线（Response Curve）的类型与参数，最终输出标准化 JSON 配置文件和曲线采样数据文件。支持多种 LLM 模型灵活切换，降低策划手动调参成本。
 
 ## 核心功能
 
@@ -51,7 +51,7 @@ todos:
 - 通过飞书开放平台 Sheets API 在线读取策划维护的电子表格
 - 使用 App ID / App Secret 获取 tenant_access_token 进行认证
 - 通过 spreadsheetToken 和 sheetId 精确定位目标表格和工作表
-- 自动识别关键列：NPC名称、性格标签、行为偏好、设计意图
+- 自动识别关键列：NPC名称、性格标签、需求、设计意图
 - 支持 CLI 参数传入飞书凭据和表格定位信息
 
 ### 2. 本地 Excel/CSV 文档解析（备选数据源）
@@ -190,7 +190,7 @@ utility-design-agent/
 
 ### 关键数据结构
 
-**NPCData**: 从飞书或本地文件解析出的单个NPC原始数据，包含名称、性格标签列表、行为偏好列表以及策划撰写的自然语言设计意图。
+**NPCData**: 从飞书或本地文件解析出的单个NPC原始数据，包含名称、性格标签列表、需求列表以及策划撰写的自然语言设计意图。
 
 ```python
 from pydantic import BaseModel
@@ -198,7 +198,7 @@ from pydantic import BaseModel
 class NPCData(BaseModel):
     name: str
     personality_tags: list[str]       # 如 ["胆小", "贪婪"]
-    behavior_preferences: list[str]   # 如 ["远程攻击", "拾取物品"]
+    needs: list[str]   # 如 ["远程攻击", "拾取物品"]
     design_intent: str                # 自然语言描述
 ```
 

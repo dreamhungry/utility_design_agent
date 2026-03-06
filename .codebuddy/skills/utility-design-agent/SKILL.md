@@ -61,7 +61,7 @@ Three reader types are available, all sharing the `BaseReader` interface:
    reader = DictReader()
    npcs = await reader.read(data=[
        {"name": "Goblin", "personality_tags": ["timid", "greedy"],
-        "behavior_preferences": ["flee", "loot"], "design_intent": "..."},
+        "needs": ["flee", "loot"], "design_intent": "..."},
    ])
    ```
 
@@ -72,7 +72,7 @@ Use `create_reader(source_type, **kwargs)` factory function to create readers dy
 Auto-detection supports these column names (case-insensitive):
 - **Name**: `NPC名称`, `name`, `npc_name`, `名称`, `npc`
 - **Personality Tags**: `性格标签`, `personality_tags`, `personality`, `标签`
-- **Behavior Preferences**: `行为偏好`, `behavior_preferences`, `behavior`, `偏好`
+- **Needs**: `需求`, `needs`, `behavior`, `偏好`
 - **Design Intent**: `设计意图`, `design_intent`, `intent`, `意图`
 
 Tags can be separated by: `、` `,` `，` `;` `；`

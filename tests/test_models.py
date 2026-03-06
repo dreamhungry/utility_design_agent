@@ -11,7 +11,7 @@ class TestNPCData:
         npc = NPCData(
             name="哥布林",
             personality_tags=["胆小", "贪婪"],
-            behavior_preferences=["逃跑", "拾取"],
+            needs=["逃跑", "拾取"],
             design_intent="生命值低时逃跑",
         )
         assert npc.name == "哥布林"
@@ -20,7 +20,7 @@ class TestNPCData:
     def test_defaults(self):
         npc = NPCData(name="测试NPC")
         assert npc.personality_tags == []
-        assert npc.behavior_preferences == []
+        assert npc.needs == []
         assert npc.design_intent == ""
 
     def test_missing_name_raises(self):

@@ -75,7 +75,7 @@ class LocalReader(BaseReader):
         mapping: dict[str, list[str]] = {
             "name": ["npc名称", "name", "npc_name", "名称", "npc"],
             "personality_tags": ["性格标签", "personality_tags", "personality", "标签"],
-            "behavior_preferences": ["行为偏好", "behavior_preferences", "behavior", "偏好"],
+            "needs": ["需求", "needs", "behavior", "偏好"],
             "design_intent": ["设计意图", "design_intent", "intent", "意图"],
         }
         lower_header = [str(h).strip().lower() for h in header]
@@ -126,7 +126,7 @@ class LocalReader(BaseReader):
                 NPCData(
                     name=str(name).strip(),
                     personality_tags=_split_tags(_cell("personality_tags")),
-                    behavior_preferences=_split_tags(_cell("behavior_preferences")),
+                    needs=_split_tags(_cell("needs")),
                     design_intent=str(_cell("design_intent") or ""),
                 )
             )

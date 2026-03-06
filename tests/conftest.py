@@ -12,7 +12,7 @@ def sample_npc() -> NPCData:
     return NPCData(
         name="哥布林",
         personality_tags=["胆小", "贪婪"],
-        behavior_preferences=["逃跑", "拾取"],
+        needs=["逃跑", "拾取"],
         design_intent="生命值低时倾向逃跑，周围有掉落物时优先拾取",
     )
 
@@ -23,13 +23,13 @@ def sample_npc_list() -> list[NPCData]:
         NPCData(
             name="哥布林",
             personality_tags=["胆小", "贪婪"],
-            behavior_preferences=["逃跑", "拾取"],
+            needs=["逃跑", "拾取"],
             design_intent="生命值低时倾向逃跑",
         ),
         NPCData(
             name="骑士",
             personality_tags=["勇敢", "正义"],
-            behavior_preferences=["攻击", "防御"],
+            needs=["攻击", "防御"],
             design_intent="优先保护队友",
         ),
     ]

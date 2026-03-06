@@ -39,16 +39,20 @@ async def main():
     
     npc_data_list = [
         {
-            "name": "哥布林",
-            "personality_tags": ["胆小", "贪婪"],
-            "behavior_preferences": ["逃跑", "拾取宝物"],
-            "design_intent": "生命值低于 30% 时优先逃跑，发现宝物时优先拾取",
+            "name": "捏捏扭",
+            "personality_tags": ["孩子王", ],
+            "features": ["扭扭捏捏爱哭鬼"],
+            "needs": ["野生(探索欲)", "饱腹", "口渴", "温度", "运动"],
+            "age": 15,
+            "design_intent": "扭扭捏捏的小姑娘，害怕孤独和尴尬。常年被不自信的乌云笼罩，眼睛总是处于湿漉漉的梅雨季。其实她并没有近视喔，眼镜只是装饰物，是一种自我保护机制。",
         },
         {
-            "name": "精英守卫",
-            "personality_tags": ["忠诚", "勇敢"],
-            "behavior_preferences": ["防守", "支援队友"],
-            "design_intent": "优先防守关键位置，队友生命值低时提供支援",
+            "name": "莓衣",
+            "personality_tags": ["孩子王", ],
+            "features": ["外表甜美性格火爆的小姑娘", "吐槽役"],
+            "needs": ["野生(探索欲)", "饱腹", "口渴", "温度", "运动"],
+            "age": 12,
+            "design_intent": "总是皱着“莓”头的呛口的小不点，有着草莓一般的甜美外表和辣椒似的的爆辣内心。不要看她小就轻视她哦，她会呛得你分不清东南西北！",
         },
     ]
     
@@ -110,7 +114,8 @@ async def main():
             try:
                 response = await llm.generate(messages)
                 print(f"   [OK] 生成成功")
-                print(f"      响应预览: {response[:100]}...")
+                # print(f"      响应预览: {response[:100]}...")
+                print(f"      响应预览: {response}")
                 
                 # 这里需要解析 LLM 返回的 JSON
                 # 简化示例，假设返回了效用函数列表
@@ -123,7 +128,7 @@ async def main():
                 traceback.print_exc()
         else:
             print(f"   [INFO] 跳过 LLM 调用（使用模拟数据）")
-        
+        continue
         # 使用模拟数据进行演示
         from utility_design_agent.models import UtilityFunction, NPCCurveConfig
         
@@ -168,7 +173,7 @@ async def main():
             metadata={"personality": npc.personality_tags},
         )
         all_configs.append(config)
-    
+    return
     print(f"[OK] 共生成 {len(all_configs)} 个 NPC 的效用函数配置")
     print()
 

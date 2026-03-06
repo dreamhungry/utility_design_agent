@@ -13,9 +13,10 @@ class NPCData(BaseModel):
 
     name: str = Field(..., description="NPC 名称")
     personality_tags: list[str] = Field(default_factory=list, description="性格标签列表")
-    behavior_preferences: list[str] = Field(default_factory=list, description="行为偏好列表")
+    needs: list[str] = Field(default_factory=list, description="需求列表")
     design_intent: str = Field("", description="自然语言设计意图")
-
+    age: int = Field(default=0, description="年龄")
+    features: list[str] = Field(default_factory=list, description="特性")
 
 class UtilityFunction(BaseModel):
     """LLM 生成的单条效用函数定义"""
